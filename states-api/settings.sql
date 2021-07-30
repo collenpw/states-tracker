@@ -1,0 +1,3 @@
+CREATE DATABASE states;
+CREATE USER statesuser WITH PASSWORD 'states';
+GRANT ALL PRIVILEGES ON DATABASE states TO statesuser;
