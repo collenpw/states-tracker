@@ -11,16 +11,27 @@ const AddState = () => {
 
     const initialFormData = {
         'name': '',
-        'date': ''
+        'date': null
     }
 
     const [formData, setFormData] = useState(initialFormData)
 
     const _handleSubmit = async(e) => {
+        e.preventDefault();
         try {
+            // console.log(formData.date.length);
+            if(formData.date) {
+                setFormData((prevState) => {
+                    return {...prevState, 'date': null}
+                })
+            }
+            console.log(formData);
             const res = await fetch ('http://localhost:8000/states',{
                 method: 'POST',
                 body: JSON.stringify(formData),
+                headers: {
+					'Content-Type': 'application/json',
+				},
             })
             if (res.status === 201) {
                 history.push('/states')
@@ -57,9 +68,9 @@ const AddState = () => {
 				<Form.Group controlId='date'>
 					<Form.Label>Date</Form.Label>
 					<Form.Control
-						required
+                        placeholder='year'
 						autoFocus
-						type='date'
+						type='text'
 						value={formData.date}
 						onChange={_handleChange}
 					/>

@@ -40,3 +40,13 @@
 .center-div {
   margin: 0 auto;
 }
+
+.buttons{
+  /* display: inline;
+  float: right; */
+  
+}
+
+.state{
+  display: flex;
+}
